@@ -6,8 +6,7 @@ Author: Yann Clough
 Maintainer: Yann Clough <yann.clough@cec.lu.se>
 Description: The functions in this package compute economic and ecological indicators for agricultural landscapes.
    The functions take rasters of the land-use crop-cover as inputs. Currently the functions are not general, but narrowly 
-   programmed as support functions for modelling in the ECODEAL project (https://www.cec.lu.se/ecodeal), in collaboration
-   with Stefan Kirchweger and Jochen Kantelhardt at BOKU Vienna.
+   programmed as support functions for modelling in the ECODEAL project (https://www.cec.lu.se/ecodeal).
 License: Proprietary
 Encoding: UTF-8
 LazyData: true
