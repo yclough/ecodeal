@@ -1,0 +1,14 @@
+Package: ecodeal
+Type: Package
+Title: Functions for economic-ecological analyses of agricultural landscapes
+Version: 0.1.0
+Author: Yann Clough
+Maintainer: Yann Clough <yann.clough@cec.lu.se>
+Description: The functions in this package compute economic and ecological indicators for agricultural landscapes.
+   The functions take rasters of the land-use crop-cover as inputs. Currently the functions are not general, but narrowly 
+   programmed as support functions for modelling in the ECODEAL project (https://www.cec.lu.se/ecodeal).
+License: Proprietary
+Encoding: UTF-8
+LazyData: true
+Imports: raster, rgdal, rgeos, spatial.tools
+RoxygenNote: 6.0.1
