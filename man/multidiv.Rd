@@ -5,20 +5,24 @@
 \title{Computes multidiversity estimates for land-use crop-cover rasters}
 \usage{
 multidiv(rfield = lu.plot[[1]][[2]], rcrop = lu.plot[[1]][[3]],
-  rgreenedges = rbled[[1]], exclude_field = c(0), exclude_crop = c(14),
-  cell.size = 25, widthgreenedges = 2, model = model3, core = TRUE,
-  corewidth = 500)
+  rgreenedges = rbled[[1]], cereal = 1:8, snh_types = 133:164,
+  exclude_field = 0, exclude_crop = c(100:199), cell.size = 25,
+  widthgreenedges = 2, model = model3, core = TRUE, corewidth = 500)
 }
 \arguments{
 \item{rfield}{A raster containing identifier values for each agricultural field}
 
 \item{rcrop}{A raster containing the crop codes}
 
-\item{rgreenedges}{A raster or Rasterstack with values 0 or 1 indicating in which cells a green field adge is to be found.}
+\item{rgreenedges}{A raster or Rasterstack with values indicating the length in meters of green field edges of different widths.}
+
+\item{cereal}{A vector of numeric values indicating cereal crop codes - these are joined into one category as in Sirami et al.}
+
+\item{snh_types}{A  vector of numeric values indicating semi-natural habitat types following Sirami et al.}
 
 \item{exclude_field}{A vector of identifier values to be considered as non-agricultural areas. Defaults to 0.}
 
-\item{exclude_crop}{A vector of crop codes to be considered as non-crop. Defaults to 14.}
+\item{exclude_crop}{A vector of crop codes to be considered as non-crop. Defaults to c(100:199).}
 
 \item{cell.size}{A number indicating the cell height/widht in meters. Defaults to 25.}
 
@@ -37,9 +41,9 @@ A list containing the estimates, the model call, and a data frame of the explana
 Computes multidiversity estimates for land-use crop-cover rasters
 }
 \examples{
-multidiv(rfield=lu.plot[[1]][[2]],rcrop=lu.plot[[1]][['lu10']],rgreenedges=rbled[[1]],exclude_field=c(0),exclude_crop=c(14),cell.size=25,widthgreenedges=2,model=model3,core=FALSE,corewidth=500)
-
-output_multidiv_multiple_landscapes<-do.call("rbind",lapply(as.list(1:13),function(x) multidiv(rfield=lu.plot[[x]][[2]],rcrop=lu.plot[[x]][['lu10']],rgreenedges=rbled[[x]], exclude_field=c(0),exclude_crop=c(14),cell.size=25,widthgreenedges=2,model=model3,core=FALSE,corewidth=500)$pred_multidiv))
-
-output_explvars_multiple_landscapes<-do.call("rbind",lapply(as.list(1:13),function(x) multidiv(rfield=lu.plot[[x]][[2]],rcrop=lu.plot[[x]][['lu10']],rgreenedges=rbled[[x]], exclude_field=c(0),exclude_crop=c(14),cell.size=25,widthgreenedges=2,model=model3,core=FALSE,corewidth=500)$explvars))
+# will not run, example for testing mutlidiv for Kirchweger et al. in prep.:
+exampleoutput<-lapply(as.list(1:13),function(x) multidiv(rfield=struc.sz[[l]][[x]],rcrop=rall[[x]][[1]][[1]],
+rgreenedges=stack(field.edges.sz[[l]][[x]][[2]],field.edges.sz[[l]][[x]][[3]]),
+exclude_field=0,exclude_crop=c(100:199),snh_types=133:164,cereal=1:8,
+cell.size=25,widthgreenedges=widthedges,model=mymodel,core=FALSE,corewidth=500))multidiv(rfield=lu.plot[[1]][[2]],rcrop=lu.plot[[1]][['lu10']],rgreenedges=rbled[[1]],exclude_field=c(0),exclude_crop=c(14),cell.size=25,widthgreenedges=2,model=model3,core=FALSE,corewidth=500)
 }
